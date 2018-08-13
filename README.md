@@ -5,9 +5,9 @@ This app is a personal proyect from use Xamarin Forms into mobile app. This app 
 Some screenshots [here](https://github.com/blopeznet/pepper/tree/master/Images "here"). 
 (Most of screenshots are from Android emulator, but app works on iOS and UWP)
 
-[![Main (Android)](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png "Main (Android)")](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png "Main (Android)")
+[![Main (Android)](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png "Main (Android)")](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png =188x334 "Main (Android)")
 
-[![Marvel Wikia (iOS)](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png "Marvel Wikia (iOS)")](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png "Marvel Wikia (iOS)")
+[![Marvel Wikia (iOS)](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png "Marvel Wikia (iOS)")](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png =188x334 "Marvel Wikia (iOS)")
 
 
 Features:
