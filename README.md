@@ -1,11 +1,11 @@
 # **P.E.P.P.E.R :**
 
-This app is a personal proyect from use Xamarin Forms into mobile app. This app displays a  lot of information from marvel universe, using Marvel API, Tumblr, Wikia, and Rss sources. **This is a personal proyect with reason for learning, not for commercial use.**
+This app is a personal proyect from use Xamarin Forms into mobile app. This app displays a  lot of information from marvel universe, using Marvel API, Tumblr, Wikia, and Rss sources. **This is a personal proyect for share and learn, not for commercial use.**
 
 Some screenshots [here](https://github.com/blopeznet/pepper/tree/master/Images "here"). 
 (Most of screenshots are from Android emulator, but app works on iOS and UWP)
 
-<table>
+<table border="0">
 <tr>
 <th>
 <img src="https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png" width="188" height="334"/>
