@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local="clr-namespace:Pepper"
+             xmlns:control="clr-namespace:Pepper.Common.Controls"
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:carrousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="Pepper.Views.RssItemPage">
+  <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource Tertiary}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Image BackgroundColor="{StaticResource Tertiary}" Source="{local:ImageResource Pepper.Assets.IronMask.png}" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Fill" Opacity="90"/>
+            <Grid BackgroundColor="{StaticResource Tertiary}">
+                <WebView x:Name="webViewFeed" BackgroundColor="{StaticResource Tertiary}"/>
+            </Grid>
+            <Grid x:Name="gridActions" Grid.Row="1" BackgroundColor="{StaticResource Tertiary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="ShareFeedImg" Grid.RowSpan="2" IsEnabled="True" Source="{local:ImageResource Pepper.Assets.Share.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="24,12,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShareFeed"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+                <Image x:Name="BrowserFeedImg" Grid.Column="2" Grid.RowSpan="2" IsEnabled="True"  Source="{local:ImageResource Pepper.Assets.Download.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="0,12,24,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                     Tapped="BrowserFeed"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+            <control:NetErrorView x:Name="NetErrorView" Grid.RowSpan="2"
+                              IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

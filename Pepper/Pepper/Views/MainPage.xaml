@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:local="clr-namespace:Pepper"
+             x:Name="MainPepperPage"
+             xmlns:control="clr-namespace:Pepper.Common.Controls"
+             x:Class="Pepper.Views.MainPage">
+    <Grid>
+        <Grid x:Name="gridMain" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="{StaticResource ColorPrimary}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="95"/>
+            </Grid.RowDefinitions>
+            <Image Source="{local:ImageResource Pepper.Assets.IronMask.png}" 
+                   Aspect="AspectFill" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Fill" 
+                   Grid.Row="1" Opacity="90"/>
+            <Grid x:Name="gridSearchBox" Margin="12,12,12,4" BackgroundColor="{StaticResource Tertiary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="SearchEntry" PlaceholderColor="{StaticResource ColorText}" BackgroundColor="{StaticResource Tertiary}" 
+                       TextColor="{StaticResource ColorText}"                        
+                       FontAttributes="Bold" 
+                       HeightRequest="50" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       Focused="SearchEntry_Focused"
+                       Unfocused="SearchEntry_Unfocused"
+                       Margin="4"
+                       IsVisible="{Binding SearchMode}" Placeholder="Search character.." Text="{Binding SuggestName}">
+                    <Entry.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCommand}"/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label IsVisible="False" x:Name="CancelSearch" Grid.Column="1" FontSize="Medium" Margin="0,4,12,4" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" Text="Cancel" TextColor="{StaticResource ColorText}"/>
+            </Grid>
+            <ListView x:Name="lvRss" Opacity="{Binding InvShowSuggest,Converter={StaticResource OpacityBoolConverter}}" 
+                          IsEnabled="{Binding InvShowSuggest}" 
+                          BackgroundColor="Transparent" 
+                          HasUnevenRows="True" Grid.Row="1" 
+                          SeparatorVisibility="None"
+                          Margin="8,4,8,4"
+                          ItemsSource="{Binding RssItems}" 
+                          ItemTemplate="{StaticResource RssItemTemplate}">
+            </ListView>
+            <ListView x:Name="lvResult" IsVisible="{Binding ShowSuggest}" 
+                      ItemsSource="{Binding Suggestions}"  
+                      BackgroundColor="Transparent"
+                      SeparatorColor="{StaticResource ColorPrimary}"
+					  HasUnevenRows="True" Grid.Row="1" 
+                      SeparatorVisibility="None"
+                      ItemTemplate="{StaticResource SearchResultTemplate}">
+            </ListView>
+            <Grid x:Name="gridActions" Grid.Row="2" VerticalOptions="End" HeightRequest="95" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.RowSpan="2" Grid.Column="1" Opacity="80" HeightRequest="100" WidthRequest="100" Source="{local:ImageResource Pepper.Assets.Wikia.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                     Tapped="Button_Wikia"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+                <Image Grid.Column="0" Opacity="80" HeightRequest="100" WidthRequest="100" Grid.RowSpan="2" Source="{local:ImageResource Pepper.Assets.Marvel.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                     Tapped="Button_Marvel"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+                <Image Grid.Column="2" Opacity="80" HeightRequest="100" WidthRequest="100" Grid.RowSpan="2" Source="{local:ImageResource Pepper.Assets.Tumblr.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                     Tapped="Button_Tumblr"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+        </Grid>
+        <control:LoadingView x:Name="LoadingView" IsVisible="{Binding IsBusy}" />
+        <control:NetErrorView x:Name="NetErrorView" 
+                              IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+    </Grid>
+</ContentPage>

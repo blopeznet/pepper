@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Pepper"    
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:control="clr-namespace:Pepper.Common.Controls"
+             x:Class="Pepper.Views.MarvelDetailPage">
+    <ContentPage.Content>
+        <Grid>
+            <ContentView
+                x:Name="HeaderPanel"
+                BackgroundColor="{StaticResource Tertiary}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+                >
+                <ContentView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="0,-75,0,0">
+                        <On Platform="Android" Value="0,0,0,0" />
+                        <On Platform="iOS" Value="0,-75,0,0" />
+                    </OnPlatform>
+                </ContentView.Margin>
+                <ffimageloading:CachedImage 	
+                    Source="{Binding SelectedCharacter.Thumbnail.Image}" 
+                    Aspect="AspectFill"
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="Start"
+					Opacity=".8">
+                    <ffimageloading:CachedImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double" Default="250">
+                            <On Platform="Android" Value="200" />
+                            <On Platform="iOS" Value="275" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.HeightRequest>
+                </ffimageloading:CachedImage>
+            </ContentView>
+            <ScrollView
+                x:Name="ParallaxScroll" 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand">
+                <Grid
+				    RowSpacing="0"
+				    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid                    
+                        BackgroundColor="{StaticResource Tertiary}"
+					    Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label 
+                            Grid.Row="0"
+                            Text="{Binding SelectedCharacter.Name}"
+                            FontSize="Large" Margin="6"
+                            TextColor="{StaticResource ColorText}"
+                            />
+                        <Label 
+                            Grid.Row="1"
+                            FontSize="Medium" Margin="6"
+                            Text="{Binding SelectedCharacter.Description}"
+                            TextColor="{StaticResource ColorText}"
+                            />
+                    </Grid>
+                    <Grid                    
+                        BackgroundColor="{StaticResource Tertiary}"
+                        Grid.Row="2">
+                        <control:CustomStack Margin="4" ItemsSource="{Binding Comics}" VerticalOptions="Fill"                                             
+                        Command="{Binding ShowMarvelComicsImageCommand}"
+                                             HorizontalOptions="Fill" ItemTemplate="{StaticResource MarvelRelatedComicsTemplate}"/>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <control:LoadingView x:Name="LoadingView" IsVisible="{Binding IsBusy}" />
+            <control:NetErrorView x:Name="NetErrorView" 
+                              IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

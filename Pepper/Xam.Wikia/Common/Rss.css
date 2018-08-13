@@ -1,0 +1,29 @@
+﻿.mytable {
+    display: table;
+}
+
+.myrow {
+    display: table-row;
+}
+
+.mycell {
+    display: table-cell;
+}
+
+.column1 {
+    display: table-column;
+    background-color: green;
+}
+
+.column2 {
+    display: table-column;
+}
+
+body {
+    background-color: #1a0000!important;
+    color: white;
+}
+
+a {
+    color: #FF8C00!important;
+}

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Pepper.Common.Converters"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:vm="clr-namespace:Pepper.ViewModels"
+             x:Class="Pepper.App">
+	<Application.Resources>
+		<ResourceDictionary>
+            <!--Global Colors and Styles-->
+            <Color x:Key="ColorPrimary">#650506</Color>
+            <Color x:Key="ColorSecondary">#FFF0131E</Color>
+            <Color x:Key="Tertiary">#1a0000</Color>
+            <Color x:Key="ColorLoading">#B2400807</Color>
+            <Color x:Key="ColorText">DarkOrange</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource ColorPrimary}" />
+                <Setter Property="BarTextColor" Value="{StaticResource ColorText}" />
+            </Style>
+            <!--Global Converters-->
+            <converters:OpacityBoolConverter x:Key="OpacityBoolConverter"/>
+            <converters:TappedItemEventArgsToItemConverter x:Key="TappedItemConverter"/>
+            <converters:InvBoolConverter x:Key="InvBoolConverter"/>
+            <!--Item Templates-->
+            <DataTemplate x:Key="SearchResultTemplate">
+                <ViewCell>
+                    <Grid Margin="12,4,12,4" BackgroundColor="Transparent" HeightRequest="50">
+                        <BoxView Color="DarkGray" BackgroundColor="{StaticResource ColorPrimary}" Opacity="0.3" />
+                        <Label Margin="12,2,2,2" Text="{Binding Title}" TextColor="{StaticResource ColorText}" FontAttributes="Bold" VerticalOptions="Center" FontSize="Medium"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer          
+                                CommandParameter="{Binding}"
+                                Command="{Binding Source={x:Static vm:MainViewModel.Instance},Path=ShowCommand}"                              
+                                />
+                        </Grid.GestureRecognizers>
+                        <Grid.Behaviors>
+                            <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                        </Grid.Behaviors>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="RssItemTemplate">
+                <ViewCell>
+                    <Grid x:Name="MainGrid" Margin="6" BackgroundColor="{StaticResource ColorLoading}" HeightRequest="100">
+                        <Label Margin="12,2,100,2"  Text="{Binding Title}" TextColor="{StaticResource ColorText}" FontAttributes="Italic" 
+                               VerticalOptions="Center" FontSize="Default"/>
+                        <ffimageloading:CachedImage TransformPlaceholders="True"                                                    
+                                    DownsampleToViewSize="True"
+                                    LoadingPlaceholder="image_loading.png"
+                                    Margin="2,2,12,2" Source="{Binding UrlImg}" Aspect="AspectFill" HeightRequest="80" WidthRequest="80" 
+                                   VerticalOptions="Center" HorizontalOptions="End">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:RoundedTransformation Radius="30"/>
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer          
+                                CommandParameter="{Binding}"
+                                Command="{Binding Source={x:Static vm:MainViewModel.Instance},Path=ShowRssDetailCommand}"                              
+                                />
+                        </Grid.GestureRecognizers>
+                        <Grid.Behaviors>
+                            <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                        </Grid.Behaviors>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="MarvelCharacterTemplate">
+                <ViewCell>
+                    <Grid Margin="6" BackgroundColor="Transparent" HeightRequest="100">
+                        <BoxView Color="DarkGray" BackgroundColor="{StaticResource ColorPrimary}" Opacity="0.3"/>
+                        <Label Margin="12,2,100,2"  Text="{Binding Name}" TextColor="{StaticResource ColorText}" FontAttributes="Bold" VerticalOptions="Center" FontSize="Medium"/>
+                        <circle:CircleImage                                                                        
+                                   Margin="2,2,12,2" Source="{Binding Thumbnail.Image}" 
+                                   Aspect="AspectFill" HeightRequest="80" WidthRequest="80" 
+                                   BorderColor="{StaticResource ColorPrimary}" BorderThickness="2"
+                                   VerticalOptions="Center" HorizontalOptions="End"></circle:CircleImage>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer          
+                                CommandParameter="{Binding}"
+                                Command="{Binding Source={x:Static vm:MainViewModel.Instance},Path=ShowMarvelDetailCommand}"                              
+                                />
+                        </Grid.GestureRecognizers>
+                        <Grid.Behaviors>
+                            <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                        </Grid.Behaviors>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="TumblrItemTemplate">
+                <Grid Padding="3">
+                    <ffimageloading:CachedImage HeightRequest="100" Aspect="AspectFill"
+							DownsampleHeight="100" DownsampleUseDipUnits="false" 
+							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
+							Source="{Binding best_size.url}">
+                    </ffimageloading:CachedImage>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="TumblrSimilarItemTemplate">
+                <Grid Padding="3">
+                    <ffimageloading:CachedImage HeightRequest="200" Aspect="AspectFill"
+							DownsampleHeight="200" DownsampleUseDipUnits="false" 
+							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
+							Source="{Binding best_size.url}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="MarvelRelatedComicsTemplate">
+                <ViewCell>
+                    <Grid Margin="6" BackgroundColor="Transparent" HeightRequest="100">
+                        <BoxView Color="DarkGray" BackgroundColor="{StaticResource ColorPrimary}" Opacity="0.3"/>
+                        <Label Margin="12,2,100,2"  Text="{Binding Title}" TextColor="{StaticResource ColorText}" FontAttributes="Bold" VerticalOptions="Center" FontSize="Medium"/>
+                        <ffimageloading:CachedImage 
+                                    LoadingPlaceholder="image_loading.png"
+                                    DownsampleToViewSize="True" Margin="2,2,12,2" Source="{Binding Thumbnail.Image}" Aspect="AspectFill" HeightRequest="80" WidthRequest="80" 
+                                   VerticalOptions="Center" HorizontalOptions="End">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CornersTransformation
+                            CornersTransformType="AllCut"
+                            BottomLeftCornerSize="20"
+                            TopRightCornerSize="30"/>
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="CarrouselImageTemplate">
+                <ContentView>
+                    <ffimageloading:CachedImage  
+                        LoadingPlaceholder="image_loading.png"
+                Source="{Binding DisplayPath}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+                </ContentView>
+            </DataTemplate>
+        </ResourceDictionary>
+	</Application.Resources>
+</Application>

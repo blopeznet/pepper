@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pepper.Views.ResultPage"
+            xmlns:local="clr-namespace:Pepper"
+            xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+            xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+	        xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+            xmlns:control="clr-namespace:Pepper.Common.Controls"
+            BarTextColor="{StaticResource ColorText}"       
+            BackgroundColor="{StaticResource ColorPrimary}"
+            BarBackgroundColor="{StaticResource ColorPrimary}">
+    <ContentPage x:Name="tabWikia" 
+                 BackgroundColor="{StaticResource Tertiary}" 
+                 Icon="tab_wikia.png" Title="WIKIA" 
+                 IsVisible="False">
+        <Grid BackgroundColor="{StaticResource Tertiary}">
+        <WebView x:Name="webViewWikia" BackgroundColor="{StaticResource Tertiary}"/>
+         <control:LoadingView IsVisible="{Binding IsBusy}" />
+            <control:NetErrorView
+                              IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage x:Name="tabMarvel"  
+                 BackgroundColor="{StaticResource Tertiary}"
+                 Icon="tab_marvel.png" Title="MARVEL">
+        <Grid BackgroundColor="{StaticResource Tertiary}">
+            <Image Source="{local:ImageResource Pepper.Assets.IronMaskTwo.png}" 
+                   Aspect="AspectFill" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Fill" 
+                   Opacity="0.3"/>
+            <ListView x:Name="lvMarvelChars"  
+                      HasUnevenRows="True" ItemsSource="{Binding Characters}" 
+                      BackgroundColor="Transparent"
+                      SeparatorColor="{StaticResource Tertiary}" 
+                      VerticalOptions="Fill" HorizontalOptions="Fill"
+                      Margin="4"
+                      ItemTemplate="{StaticResource MarvelCharacterTemplate}">
+            </ListView>
+            <control:LoadingView IsVisible="{Binding IsBusy}" />
+            <control:NetErrorView
+                IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage x:Name="tabTumblr"
+                 BackgroundColor="{StaticResource Tertiary}"
+                 Icon="tab_tumblr.png" Title="TUMBLR" >
+        <Grid BackgroundColor="Transparent">
+            <Image Source="{local:ImageResource Pepper.Assets.IronMaskTwo.png}" 
+                   Aspect="AspectFill" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Fill" 
+                   Opacity="0.3"/>
+            <flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
+			FlowItemTappedCommand="{Binding ShowTumblrDetailCommand}"
+            BackgroundColor="Transparent"
+			FlowColumnMinWidth="110" FlowItemsSource="{Binding TumblrPhotos}"
+            FlowColumnTemplate="{StaticResource TumblrItemTemplate}">
+            </flv:FlowListView>
+            <control:LoadingView IsVisible="{Binding IsBusy}" />
+            <control:NetErrorView 
+                              IsVisible="{Binding IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

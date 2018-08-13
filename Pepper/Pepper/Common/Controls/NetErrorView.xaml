@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:local="clr-namespace:Pepper"
+             xmlns:vm="clr-namespace:Pepper.ViewModels"
+             x:Class="Pepper.Common.Controls.NetErrorView">
+  <ContentView.Content>
+        <Grid x:Name="GridError" BackgroundColor="{StaticResource ColorLoading}">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding Source={x:Static vm:MainViewModel.Instance},Path=IsNetworkOk}">
+                <Label Text="TRY AGAIN LATER." FontSize="Medium" Margin="12" TextColor="{StaticResource ColorText}"/>
+                <Image Opacity="80" HeightRequest="100" WidthRequest="100" 
+                       Source="{local:ImageResource Pepper.Assets.Error.png}"                        
+                       Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center">
+                </Image>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

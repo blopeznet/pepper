@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Download.png" />
+    <None Remove="Assets\Error.png" />
+    <None Remove="Assets\IronMask.png" />
+    <None Remove="Assets\IronMaskTwo.png" />
+    <None Remove="Assets\loading.png" />
+    <None Remove="Assets\Marvel.png" />
+    <None Remove="Assets\Share.png" />
+    <None Remove="Assets\Tumblr.png" />
+    <None Remove="Assets\Wikia.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Error.png" />
+    <EmbeddedResource Include="Assets\IronMaskTwo.png" />
+    <EmbeddedResource Include="Assets\loading.png" />
+    <EmbeddedResource Include="Assets\Marvel.png" />
+    <EmbeddedResource Include="Assets\Download.png" />
+    <EmbeddedResource Include="Assets\IronMask.png" />
+    <EmbeddedResource Include="Assets\Tumblr.png" />
+    <EmbeddedResource Include="Assets\Wikia.png" />
+    <EmbeddedResource Include="Assets\Share.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CarouselView.FormsPlugin.AllowViewModels" Version="5.2.1-beta" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="4.0.0.190-beta" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.6-beta" />
+    <PackageReference Include="Xamanimation" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="0.9.1-preview" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xam.Marvelous\Xam.Marvelous.csproj" />
+    <ProjectReference Include="..\Xam.Rss\Xam.Rss.csproj" />
+    <ProjectReference Include="..\Xam.Tumblr\Xam.Tumblr.csproj" />
+    <ProjectReference Include="..\Xam.Wikia\Xam.Wikia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Common\Controls\NetErrorView.xaml.cs">
+      <DependentUpon>NetErrorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RssItemPage.xaml.cs">
+      <DependentUpon>RssItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TumblrDetailPage.xaml.cs">
+      <DependentUpon>TumblrDetailPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Common\Controls\LoadingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ImageCoverView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MarvelDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

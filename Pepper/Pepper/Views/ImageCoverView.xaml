@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local="clr-namespace:Pepper"
+             xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
+             xmlns:control="clr-namespace:Pepper.Common.Controls"
+             xmlns:vm="clr-namespace:Pepper.ViewModels"
+             xmlns:carrousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="Pepper.Views.ImageCoverView">
+  <ContentView.Content>
+        <Grid BackgroundColor="{StaticResource Tertiary}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Image BackgroundColor="{StaticResource Tertiary}" Grid.RowSpan="2" Source="{local:ImageResource Pepper.Assets.IronMask.png}" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Fill" Opacity="90"/>
+            <Grid x:Name="gridActions" Grid.Row="1" BackgroundColor="{StaticResource Tertiary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="ShareImage" Grid.RowSpan="2" IsEnabled="True" Source="{local:ImageResource Pepper.Assets.Share.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="24,12,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShareImg"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+                <Image x:Name="BrowserImage" Grid.Column="2" Grid.RowSpan="2" IsEnabled="True"  Source="{local:ImageResource Pepper.Assets.Download.png}" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Margin="0,12,24,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                     Tapped="BrowserImg"/>
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <behaviors:ControlAnimateBehavior Animation="Shake"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+
+            <carrousel:CarouselViewControl x:Name="carrouserControl"  ItemTemplate="{StaticResource CarrouselImageTemplate}" Orientation="Horizontal" 
+                                           ItemsSource="{Binding Images}" 
+                                           ShowIndicators="True" 
+                                           ShowArrows="False" 
+                                           IndicatorsTintColor="{StaticResource ColorText}"
+                                           InterPageSpacing="10" 
+                                           VerticalOptions="Fill" 
+                                           BackgroundColor="{StaticResource Tertiary}"
+                                           HorizontalOptions="Fill"/>
+            <control:NetErrorView x:Name="NetErrorView" Grid.RowSpan="2"
+                              IsVisible=
+                                  "{Binding Source={x:Static vm:MainViewModel.Instance},Path=IsNetworkOk,Converter={StaticResource InvBoolConverter}}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

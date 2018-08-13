@@ -191,3 +191,12 @@ ModelManifest.xml
 /PramaApp/PramaApp/bin
 /PramaApp/PramaApp/obj
 DemoData
+/Pepper/Pepper.UWP/.vs/Pepper.UWP/v15/Server/sqlite3/*.lock
+/Pepper/Pepper.UWP/.vs/Pepper.UWP/v15/Server/sqlite3/*.ide
+/Pepper/Pepper.UWP/.vs/Pepper.UWP/v15/Server/sqlite3/*.ide-shm
+/Pepper/Pepper.UWP/.vs/Pepper.UWP/v15/Server/sqlite3/*.ide-wal
+/.vs/Pepper/DesignTimeBuild/*.dtbcache
+/.vs/Pepper/v15/Server/sqlite3/*.lock
+/.vs/Pepper/v15/Server/sqlite3/*.ide
+/.vs/Pepper/v15/Server/sqlite3/*.ide-shm
+/.vs/Pepper/v15/Server/sqlite3/*.ide-wal
