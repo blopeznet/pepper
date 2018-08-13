@@ -43,22 +43,22 @@ Features:
 
 Some libraries used:
 
-*Newtonsoft.Json
-CarouselView.FormsPlugin.AllowViewModels
-DLToolkit.Forms.Controls.FlowListView
-HtmlAgilityPack
-RestSharp
-Xam.Plugin.Connectivity
-Xam.Plugins.Forms.ImageCircle
-Xamanimation
-Xamarin.Essentials
-Xamarin.FFImageLoading.Forms*
+- Newtonsoft.Json
+- CarouselView.FormsPlugin.AllowViewModels
+- DLToolkit.Forms.Controls.FlowListView
+- HtmlAgilityPack
+- RestSharp
+- Xam.Plugin.Connectivity
+- Xam.Plugins.Forms.ImageCircle
+- Xamanimation
+- Xamarin.Essentials
+- Xamarin.FFImageLoading.Forms*
 
 Some proyects i got ideas or transform to PCL for use with Xamarin.Forms:
 
-Xam.Rss based on https://github.com/codehollow/FeedReader
-Xam.Marvelous based on https://github.com/TylerBrinks/Marvelous
-Xam.Wikia based on https://github.com/fablecode/wikia
+- Xam.Rss based on https://github.com/codehollow/FeedReader
+- Xam.Marvelous based on https://github.com/TylerBrinks/Marvelous
+- Xam.Wikia based on https://github.com/fablecode/wikia
 
 More information:
 
