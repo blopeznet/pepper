@@ -13,6 +13,12 @@ Some screenshots [here](https://github.com/blopeznet/pepper/tree/master/Images "
 <th>
 <img src="https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png" width="188" height="334"/>
 </th>
+<th>
+<img src="https://github.com/blopeznet/pepper/blob/master/Images/06_Marvel_Detail_Char.png" width="188" height="334"/>
+</th>
+<th>
+<img src="https://github.com/blopeznet/pepper/blob/master/Images/08_Result_Marvel_Tumblr%20(iOS).png" width="188" height="334"/>
+</th>
 </tr>
 <table/>
 
