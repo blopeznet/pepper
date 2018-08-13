@@ -2,7 +2,13 @@
 
 This app is a personal proyect from use Xamarin Forms into mobile app. This app displays a  lot of information from marvel universe, using Marvel API, Tumblr, Wikia, and Rss sources. **This is a personal proyect with reason for learning, not for commercial use.**
 
-Some screenshots on Images folder on this repository. (Most of screenshots are from Android emulator, but app works on iOS and UWP)
+Some screenshots [here](https://github.com/blopeznet/pepper/tree/master/Images "here"). 
+(Most of screenshots are from Android emulator, but app works on iOS and UWP)
+
+[![Main (Android)](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png "Main (Android)")](https://github.com/blopeznet/pepper/blob/master/Images/01_Main.png "Main (Android)")
+
+[![Marvel Wikia (iOS)](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png "Marvel Wikia (iOS)")](https://github.com/blopeznet/pepper/blob/master/Images/04_Result_Marvel_Wikia%20(iOS).png "Marvel Wikia (iOS)")
+
 
 Features:
 
