@@ -97,6 +97,15 @@ namespace Pepper.Resx {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Data provided by Marvel. © 2014 Marvel.
+        /// </summary>
+        internal static string Marvel_Attributtion {
+            get {
+                return ResourceManager.GetString("Marvel_Attributtion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a http://marvel.wikia.com.
         /// </summary>
         internal static string Url_MarvelWikia {
