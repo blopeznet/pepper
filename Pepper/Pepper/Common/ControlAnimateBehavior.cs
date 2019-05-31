@@ -98,8 +98,9 @@ namespace Pepper.Common.Behavior
 
             while (!cancellation.IsCancellationRequested)
             {                
-                   await element.RotateTo(360, 800, Easing.Linear);
-                   await element.RotateTo(0, 0); // reset to initial position                
+                   await element.RelRotateTo(360, 8000, Easing.Linear);
+                   //await element.RotateTo(0, 0); // reset to initial position    
+                
             }
         }
 

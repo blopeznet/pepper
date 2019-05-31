@@ -9,6 +9,7 @@
     <None Remove="Assets\Error.png" />
     <None Remove="Assets\IronMask.png" />
     <None Remove="Assets\IronMaskTwo.png" />
+    <None Remove="Assets\load.gif" />
     <None Remove="Assets\loading.png" />
     <None Remove="Assets\Marvel.png" />
     <None Remove="Assets\Share.png" />
@@ -19,6 +20,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Error.png" />
     <EmbeddedResource Include="Assets\IronMaskTwo.png" />
+    <EmbeddedResource Include="Assets\load.gif" />
     <EmbeddedResource Include="Assets\loading.png" />
     <EmbeddedResource Include="Assets\Marvel.png" />
     <EmbeddedResource Include="Assets\Download.png" />

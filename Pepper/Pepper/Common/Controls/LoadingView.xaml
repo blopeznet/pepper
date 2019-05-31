@@ -4,18 +4,15 @@
              xmlns:behaviors="clr-namespace:Pepper.Common.Behavior"
              xmlns:local="clr-namespace:Pepper"
              xmlns:vm="clr-namespace:Pepper.ViewModels"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Pepper.Common.Controls.LoadingView">
   <ContentView.Content>
         <Grid x:Name="GridLoad" BackgroundColor="{StaticResource ColorLoading}">
-            <Image Opacity="80" HeightRequest="100" WidthRequest="100" 
-                   Source="{local:ImageResource Pepper.Assets.loading.png}" 
+            <ffimageloading:CachedImage Opacity="80" HeightRequest="80" WidthRequest="80" 
+                   Source="{local:ImageResource Pepper.Assets.load.gif}" 
                    IsVisible="{Binding Source={x:Static vm:MainViewModel.Instance},Path=IsBusy}"
                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center">
-                <Image.Behaviors>
-                    <behaviors:ControlAnimateBehavior Animation="Rotate"                                                                                                                     
-                     />
-                </Image.Behaviors>
-            </Image>
+            </ffimageloading:CachedImage>
         </Grid>
     </ContentView.Content>
 </ContentView>
