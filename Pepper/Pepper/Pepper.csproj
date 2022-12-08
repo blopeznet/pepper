@@ -33,7 +33,7 @@
   <ItemGroup>
     <PackageReference Include="CarouselView.FormsPlugin.AllowViewModels" Version="5.2.1-beta" />
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="4.0.0.190-beta" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.6-beta" />
     <PackageReference Include="Xamanimation" Version="1.1.0" />
